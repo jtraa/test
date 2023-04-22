@@ -1,8 +1,9 @@
 Bij deze mijn opdracht voor Newton Car Maintenance als test voor OnderwijsSpiegel.
 
 Om dit project te starten:
-- server opstarten: (bijvoorbeeld) php -S 127.0.0.1:8000
+- Server opstarten: (bijvoorbeeld) php -S 127.0.0.1:8000
 - Composer install voor de autoload.php
+- /public/index.php is de route
 
 Hier is de lijst met aannames die ik heb gemaakt om deze opdracht af te ronden:
 - De codebase bevindt zich op een lokale machine en wordt uitgevoerd met behulp van PHP 8.0 of hoger en de ingebouwde webserver.
