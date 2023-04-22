@@ -5,8 +5,7 @@ require_once '../vendor/autoload.php';
 use App\Classes\ScheduledMaintenanceJob;
 use App\Classes\SparePart;
 use App\Classes\MaintenanceJob;
-use App\ExternalSystem;
-use Carbon\Carbon;
+use App\Classes\ExternalSystem;
 
 $externalSystem = new ExternalSystem();
 
@@ -49,7 +48,7 @@ class App
         ];
     }
 
-    private function createScheduledMaintenanceJob(string $brand, string $model, MaintenanceJob $maintenanceJob, array $parts, float $serviceHours, Carbon $startTime, Carbon $endTime): ScheduledMaintenanceJob
+    private function createScheduledMaintenanceJob(string $brand, string $model, MaintenanceJob $maintenanceJob, array $parts, float $serviceHours, DateTime $startTime, DateTime $endTime): ScheduledMaintenanceJob
     {
         return new ScheduledMaintenanceJob($brand, $model, $maintenanceJob, $parts, $serviceHours, $startTime, $endTime);
     }
@@ -61,14 +60,17 @@ class App
 
     private function run(): void
     {
+        $startTime = DateTime::createFromFormat('Y-m-d H:i:s', '2023-05-01 10:00:00', new DateTimeZone('UTC'));
+        $endTime = DateTime::createFromFormat('Y-m-d H:i:s', '2023-05-01 13:00:00', new DateTimeZone('UTC'));
+
         $scheduledMaintenanceJob = $this->createScheduledMaintenanceJob(
             'Toyota',
             'Corolla',
             $this->maintenanceJobs[0],
             [$this->spareParts[0], $this->spareParts[1]],
             2.5,
-            Carbon::parse('2023-05-01 10:00:00'),
-            Carbon::parse('2023-05-01 13:00:00')
+            $startTime,
+            $endTime
         );
 
         $this->printScheduledMaintenanceJobDetails($scheduledMaintenanceJob);

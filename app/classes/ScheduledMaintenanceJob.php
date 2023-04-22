@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+use Datetime;
+
 class ScheduledMaintenanceJob
 {
     private $carBrand;
@@ -14,7 +16,7 @@ class ScheduledMaintenanceJob
     private $weekendSurcharge = 1.5;
     private $vatRate = 0.21;
 
-    public function __construct($carBrand, $carModel, $maintenanceJob, $parts, $serviceHours, $startTime, $endTime)
+    public function __construct($carBrand, $carModel, $maintenanceJob, $parts, $serviceHours, DateTime $startTime, DateTime $endTime)
     {
         $this->carBrand = $carBrand;
         $this->carModel = $carModel;
@@ -82,20 +84,16 @@ class ScheduledMaintenanceJob
 
     public function getTotalPrice()
     {
-        // Calculate the price for the service hours
+
         $price = $this->serviceHours * $this->maintenanceJob->getRate();
 
-        // Add the cost of the parts
         foreach ($this->parts as $part) {
             $price += $part->getPrice();
         }
 
-        // Add the weekend surcharge
-        if ($this->startTime->isWeekend()) {
+        if (in_array($this->startTime->format('D'), ['Sat', 'Sun'])) {
             $price *= $this->weekendSurcharge;
         }
-
-        // Add VAT
         $price *= (1 + $this->vatRate);
 
         return $price;
