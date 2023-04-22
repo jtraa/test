@@ -56,7 +56,7 @@ class App
 
     private function printScheduledMaintenanceJobDetails(ScheduledMaintenanceJob $scheduledMaintenanceJob): void
     {
-        echo 'The price of the scheduled maintenance job is ' . number_format($scheduledMaintenanceJob->getTotalPrice(), 2) . ' USD.' . PHP_EOL;
+        echo 'The price of the scheduled maintenance job is ' . number_format($scheduledMaintenanceJob->getTotalPrice(), 2) . ' Euro.' . PHP_EOL;
     }
 
     private function run(): void

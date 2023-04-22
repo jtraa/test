@@ -2,7 +2,8 @@
 
 namespace App\Classes;
 
-class ScheduledMaintenanceJob {
+class ScheduledMaintenanceJob
+{
     private $carBrand;
     private $carModel;
     private $maintenanceJob;
@@ -13,7 +14,8 @@ class ScheduledMaintenanceJob {
     private $weekendSurcharge = 1.5;
     private $vatRate = 0.21;
 
-    public function __construct($carBrand, $carModel, $maintenanceJob, $parts, $serviceHours, $startTime, $endTime) {
+    public function __construct($carBrand, $carModel, $maintenanceJob, $parts, $serviceHours, $startTime, $endTime)
+    {
         $this->carBrand = $carBrand;
         $this->carModel = $carModel;
         $this->maintenanceJob = $maintenanceJob;
@@ -23,51 +25,63 @@ class ScheduledMaintenanceJob {
         $this->endTime = $endTime;
     }
 
-    public function getCarBrand() {
+    public function getCarBrand()
+    {
         return $this->carBrand;
     }
 
-    public function getCarModel() {
+    public function getCarModel()
+    {
         return $this->carModel;
     }
 
-    public function getMaintenanceJob() {
+    public function getMaintenanceJob()
+    {
         return $this->maintenanceJob;
     }
 
-    public function getParts() {
+    public function getParts()
+    {
         return $this->parts;
     }
 
-    public function getServiceHours() {
+    public function getServiceHours()
+    {
         return $this->serviceHours;
     }
 
-    public function getStartTime() {
+    public function getStartTime()
+    {
         return $this->startTime;
     }
 
-    public function getEndTime() {
+    public function getEndTime()
+    {
         return $this->endTime;
     }
 
-    public function setWeekendSurcharge($weekendSurcharge) {
+    public function setWeekendSurcharge($weekendSurcharge)
+    {
         $this->weekendSurcharge = $weekendSurcharge;
     }
 
-    public function getWeekendSurcharge() {
+    public function getWeekendSurcharge()
+    {
         return $this->weekendSurcharge;
     }
 
-    public function setVatRate($vatRate) {
+    public function setVatRate($vatRate)
+    {
         $this->vatRate = $vatRate;
     }
 
-    public function getVatRate() {
+    public function getVatRate()
+    {
         return $this->vatRate;
     }
 
-    public function getTotalPrice() {
+    public function getTotalPrice()
+    {
         // Calculate the price for the service hours
         $price = $this->serviceHours * $this->maintenanceJob->getRate();
 

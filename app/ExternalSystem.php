@@ -2,9 +2,11 @@
 
 namespace App;
 
-class ExternalSystem {
+class ExternalSystem
+{
 
-    public function getPrice($partId) {
+    public function getPrice($partId)
+    {
 
         $prices = array(
             '1' => 10.5,
