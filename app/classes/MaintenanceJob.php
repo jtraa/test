@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App;
+namespace App\Classes;
 
 
 class MaintenanceJob
@@ -10,14 +10,14 @@ class MaintenanceJob
     private $name;
     private $brand;
     private $model;
-    private $fixedRate;
+    private $rate;
 
-    public function __construct($id, $name, $brand, $model, $fixedRate) {
+    public function __construct($id, $name, $brand, $model, $rate) {
         $this->id = $id;
         $this->name = $name;
         $this->brand = $brand;
         $this->model = $model;
-        $this->fixedRate = $fixedRate;
+        $this->rate = $rate;
     }
 
     public function getId() {
@@ -36,7 +36,7 @@ class MaintenanceJob
         return $this->model;
     }
 
-    public function getFixedRate() {
-        return $this->fixedRate;
+    public function getRate() {
+        return $this->rate;
     }
 }
